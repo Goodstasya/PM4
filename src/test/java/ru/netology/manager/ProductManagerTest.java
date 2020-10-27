@@ -68,4 +68,21 @@ class ProductManagerTest {
         Product[] actual = manager.searcyBy(nameToSearch);
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void shouldFindNothingInEmptyRepo() {
+        String nameToSearch = "Producer2";
+        ProductRepository repository = new ProductRepository();
+        ProductManager manager = new ProductManager(repository);
+        Product[] expected = new Product[] {};
+        Product[] actual = manager.searcyBy(nameToSearch);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test public void shouldFindNothingByIncorrectName() {
+        String nameToSearch = "Producer85";
+        Product[] expected = new Product[] {};
+        Product[] actual = manager.searcyBy(nameToSearch);
+        assertArrayEquals(expected, actual);
+    }
 }
